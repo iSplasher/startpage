@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>New Tab</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="icon" type="image/png" href="img/pomf.png">
+		<link href="style.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+		<div class="bg" id="bg"></div>
+		<div id="toggleBlur">
+			<p style="cursor: pointer;" onclick="toggleBlur();">Toggle blur</p>
+		</div>
+		<div class="center">
+			<div id="body" valign="top">
+				<div id="header">
+					<div class="top" id="weatherContainer" onclick="toggleVisibility('weatherContainer', 'title');" style="cursor: pointer;">
+						<div id="weather2"></div>
+					</div>
+					<div class="top" id="title">
+						<p id ="titletext" class="bracket" onclick="loadWeather(); toggleVisibility('title', 'weatherContainer');" style="cursor: pointer;">POMF 💨</p>
+					</div>
+				</div>
+				<form id="searchForm" method="post" autocomplete="off" contenteditable="true">
+					<fieldset>
+						<input id="searchBar" type="text" placeholder="Search" autofocus />
+						<input type="hidden" value="fubar" id="fubar" class="input" />
+						<input type="submit" value="Search" id="submitButton" />
+					</fieldset>
+				</form>
+			</div>
+			<script type="text/javascript">
+			(function(){
+
+    var min = 100, max = 300, pad_right = 5, input = document.getElementById('searchBar');
+
+    input.style.width = min+'px';
+    input.onkeypress = input.onkeydown = input.onkeyup = function(){
+        var input = this;
+        setTimeout(function(){
+            var tmp = document.createElement('div');
+            tmp.style.padding = '0';
+            if(getComputedStyle)
+                tmp.style.cssText = getComputedStyle(input, null).cssText;
+            if(input.currentStyle)
+                tmp.style = input.currentStyle;
+            tmp.style.width = '';
+            tmp.style.position = 'absolute';
+            tmp.innerHTML = input.value.replace(/&/g, "&amp;")
+                                       .replace(/</g, "&lt;")
+                                       .replace(/>/g, "&gt;")
+                                       .replace(/"/g, "&quot;")
+                                       .replace(/'/g, "&#039;")
+                                       .replace(/ /g, '&nbsp;');
+            input.parentNode.appendChild(tmp);
+            var width = tmp.clientWidth+pad_right+1;
+            tmp.parentNode.removeChild(tmp);
+            if(min <= width && width <= max)
+                input.style.width = width+'px';
+        }, 1);
+    }
+
+})();
+			</script>
+			<blockquote>
+				<div id="resultsDiv"></div>
+			</blockquote>
+
+			<div class="d1x1">
+				<h1 class="bracket">/Prog/</h1>
+				<a href="https://projecteuler.net">Project Euler</a> <br />
+				<a href="https://docs.python.org/3/library/index.html">Python Standard Library</a> <br />
+				<a href="https://docs.python.org/3/reference/index.html">Python Lang Reference</a> <br />
+				<a href="http://dotnetperls.com/python">Python Reference</a> <br />
+				<a href="http://www.codingame.com/">Coding Game</a> <br />
+				<a href="https://github.com/">GitHub</a> <br />
+			</div>
+
+			<div class="d1x1">
+				<h1><h1 class="bracket">Boards</h1></h1>
+				<a href="http://boards.4chan.org/g/">/g/ - Technology</a> <br />
+				<a href="http://boards.4chan.org/a/">/a/ - Anime & Manga</a> <br />
+				<a href="http://boards.4chan.org/3/">/3/ - 3DCG</a> <br />
+			</div>
+
+			<div class="d1x1">
+				<h1 class="bracket">Anime</h1>
+				<a href="http://nyaa.se/">NyaaTorrents</a> <br />
+				<a href="http://myanimelist.net/">My Anime List</a> <br />
+				<a href="http://www.bakabt.me/">BakaBT</a> <br />
+				<a href="http://haruhichan.com">Haruhichan</a> <br />
+			</div>
+
+			<div class="d1x1">
+				<h1><h1 class="bracket">Web</h1></h1>
+				<a href="http://isplasher.me">iSplasher</a> <br />
+				<a href="http://it-ebooks.info">IT Ebooks</a> <br />
+				<a href="http://torrentz.com">Torrentz</a> <br />
+			</div>
+
+			<div class="d1x1">
+				<h1 class="bracket">Media</h1>
+				<a href="https://www.youtube.com/feed/subscriptions/">YouTube</a> <br />
+				<a href="http://www.soundcloud.com/">SoundCloud</a> <br />
+				<a href="http://www.deviantart.com/">DeviantArt</a> <br />
+			</div>
+
+			<div class="d1x1">
+				<h1 class="bracket">Social</h1>
+				<a href="http://quora.com">Quora</a> <br />
+				<a href="http://reddit.com">Reddit</a> <br />
+				<a href="https://facebook.com">Facebook</a> <br />
+				<a href="https://twitter.com/">Twitter</a> <br />
+			</div>
+
+			<div class="d1x1">
+				<h1 class="bracket">Gym</h1>
+				<a href="http://www.intranet.aarhustech.dk/">Aarhus Gymnasium</a> <br />
+				<a href="https://aarhustech.itslearning.com/elogin/">iT's Learning</a> <br />
+				<a href="https://selvbetjening.aarhustech.dk/login/">Selvbetjening</a> <br />
+				<a href="https://www.elevplan.dk/offentlig/KaldUnilogin.aspx">Elevplan</a> <br />
+			</div>
+
+			<div class="d1x1">
+				<h1 class="bracket">E-mail</h1>
+				<a href="http://mail.google.com">Gmail</a> <br />
+				<a href="http://outlook.com">Outlook</a> <br />
+			</div>
+
+			<div class="d2x1" id="todo">
+				<h1 class="bracket" style="cursor: pointer;" onclick="saveTodo();">Todo</h1>
+					<form method="post" action="">
+						<textarea id="todobox" name="comments">
+						</textarea>
+					</form>
+			</div>
+
+			<div class="d2x1">
+				<h1 class="bracket">Useful Firefox Hotkeys</h1>
+				<table class="d2x1Child">
+					<tr>
+					<td width="30%">Back/Forward</td>
+					<td><span>Alt</span>+<span>←</span> or <span>→</span></td>
+					</tr>
+					<tr>
+					<td width="30%">Focus URL Bar</td>
+					<td><span>Alt</span>+<span>D</span></td>
+					<td><span>Ctrl</span>+<span>L</span></td>
+					</tr>
+					<tr>
+					<td width="30%">Close Tab</td>
+					<td><span>Ctrl</span>+<span>W</span></td>
+					<td><span>Ctrl</span>+<span>F4</span></td>
+					</tr>
+					<tr>
+					<td width="30%">Next Tab</td>
+					<td><span>Ctrl</span>+<span>Tab</span></td>
+					</tr>
+					<tr>
+					<td width="30%">Focus Searchbar</td>
+					<td><span>Ctrl</span>+<span>K</span> or <span>E</span></td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+
+		<div id="bottom-margin"></div>
+
+		<script type="text/javascript">
+			// Randomize background
+			var date = new Date();
+			var hour = date.getHours();
+			if ( hour > 6 && hour < 18 ) {
+				var bg = 'bgd';
+				var number = 35; // Change to amount of pics
+				var a = Math.floor(Math.random()*number);
+				var bgn = bg + a.toString();
+				document.querySelector('.bg').classList.add(bgn);
+			}
+			else if ( hour >= 21 || hour < 3) {
+				var bg = 'bgmn';
+				var number = 28; // Change to amount of pics
+				var a = Math.floor(Math.random()*number);
+				var bgmn = bg + a.toString();
+				document.querySelector('.bg').classList.add(bgmn);
+			}
+			else {
+				var bg = 'bgn';
+				var number = 22; // Change to amount of pics
+				var a = Math.floor(Math.random()*number);
+				var bgn = bg + a.toString();
+				document.querySelector('.bg').classList.add(bgn);
+			}
+
+
+			if ( hour > 6 && hour <= 17) {
+				var numb = Math.floor(Math.random() * 9);
+				motivate = ["Start working on Python!",
+							"If not now, then when?",
+							"Please close and start reading!",
+							"Coding is the only way to get better.",
+							"You will feel good later if you code now.",
+							"You've got no excuses! Please code.",
+							"Don't waste the day..",
+							"You know how it feels to waste a day..",
+							"Use your day wiseful.."];
+				document.getElementById("titletext").innerHTML = motivate[numb];
+			}
+			else if ( hour > 17 && hour <= 21) {
+				var numb = Math.floor(Math.random() * 8);
+				motivate = ["Please don't waste your time!",
+							"Where is Manga Catalog!?",
+							"Wasting time again, i see?!",
+							"Don't do this to yourself!",
+							"Coding is the only way to get better.",
+							"Please close and start reading, omg..",
+							"Stop playing around!",
+							"If not now, then when?!?"];
+				document.getElementById("titletext").innerHTML = motivate[numb];
+			}
+			else {
+				var numb = Math.floor(Math.random() * 9);
+				motivate = ["You could have learned more today..",
+							"You could have made it by now...",
+							"Where is Manga Catalog!?",
+							"Good job wasting the day...",
+							"Why did you waste a day? :(",
+							"Did you study today? B-baka!!",
+							"You could have been an expert by now...",
+							"The things you could have made today..",
+							"Did you study?"];
+				document.getElementById("titletext").innerHTML = motivate[numb];
+			}
+
+		</script>
+
+		<!--
+			Load some JS
+		-->
+
+		<script src="js/jquery-1.7.min.js"></script>
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/FeedEk.js"></script>
+		<script src="js/jquery.simpleWeather.min.js"></script>
+		<script src="js/scripts.js"></script>
+
+		<!--
+			Search, need to unfuck
+		-->
+		<script src="js/script.js"></script>
+		<script src="js/start-search.js"></script>
+
+	</body>
+</html>
